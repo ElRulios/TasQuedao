@@ -21,13 +21,14 @@ function Emoji({notaSemestral}: SemestrapProps){
 }
 
 export default function NotaNecesaria({notaSemestral}: SemestrapProps){
+  const semestralRedonda = Number(notaSemestral.toFixed(0))
   
-    return(
-      <div className='flex justify-center my-5'>
-        <div className="size-1/2 rounded-3xl shadow-2xl border-1">
-          <h1 className="font-bold text-2xl p-5">Necesitas obtener {notaSemestral} en el semestral para pasar la materia</h1>
-          <Emoji notaSemestral={notaSemestral}/>
-        </div>
+  return(
+    <div className='flex justify-center my-5'>
+      <div className="size-1/2 rounded-3xl shadow-2xl border-1">
+        <h1 className="font-bold text-2xl p-5">Necesitas obtener {semestralRedonda} en el semestral para pasar la materia con C</h1>
+        <Emoji notaSemestral={notaSemestral}/>
       </div>
-    )
-  }
+    </div>
+  )
+}

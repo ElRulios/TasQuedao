@@ -63,7 +63,7 @@ export default function Main (){
         </div>
         <div className="flex justify-center my-5">
           <div className="size-2/5 rounded-3xl shadow-2xl border-1 p-5">
-            <h1 className="font-bold text-2xl pb-5">Nota semestral</h1>
+            <h1 className="font-bold text-2xl pb-5">Porcentaje del semestral (%)</h1>
             {inputSemestral && (<input className="border-2 p-2 size-1/2 mr-4 rounded-full mb-2" type="number" value={porcentajeSemestral} onChange={(e)=> setPorcentajeSemestral(Number(e.target.value))}></input>)}
             {inputSemestral1 && (<div>
               <p>Porcentaje (%)</p>
