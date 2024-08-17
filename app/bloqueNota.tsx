@@ -10,8 +10,8 @@ interface NnotasProps {
 
 function Nnotas({valor, porcentaje, setlaNota, setelPorcentaje}: NnotasProps){
     let notas = []
-    const [nota, setNota] = useState(Array(valor).fill(null));
-    const [notaPorcentaje, setNotaPorcentaje] = useState(Array(valor).fill(null));
+    const [nota, setNota] = useState(Array(valor).fill(""));
+    const [notaPorcentaje, setNotaPorcentaje] = useState(Array(valor).fill(""));
     let resultado:  number[] = []
     let resultadoRedonda: number[] = []
     let resultadoPorcentaje = 0
@@ -44,14 +44,27 @@ function Nnotas({valor, porcentaje, setlaNota, setelPorcentaje}: NnotasProps){
             console.log(lanota)
         } else {
           setMensaje(false);
+          alert("Verifique que coincidan los porcentajes");
         }
     };
 
     for (let i = 0; i < valor; i++){
         notas.push(
         <li key = {i}>
-            <input className="border-2 p-2 size-1/2 mr-4 rounded-full mb-2" type="text" value={nota[i] ?? ''} onChange={(e) => (handleNotaChange(i, Number(e.target.value)), setShowBresultados(true))}></input>
-            <input className="border-2 p-2 size-1/3 rounded-full mb-2" type="number" value={notaPorcentaje[i] ?? ''} onChange={(e) => (handleNotaPorcentajeChange(i, Number(e.target.value)), setShowBresultados(true))}></input>
+            <input className="border-2 p-2 size-1/2 mr-4 rounded-full mb-2" 
+            type="text" 
+            min={1} 
+            max={100} 
+            value={nota[i] ?? ''} 
+            onChange={(e) => (handleNotaChange(i, Number(e.target.value)), setShowBresultados(true))}>
+            </input>
+            <input 
+                className="border-2 p-2 size-1/3 rounded-full mb-2" 
+                type="number" 
+                min={1} max={100} 
+                value={notaPorcentaje[i] ?? ''} 
+                onChange={(e) => (handleNotaPorcentajeChange(i, Number(e.target.value)), setShowBresultados(true))}>
+            </input>
         </li>)
 
         resultado[i] = (nota[i] / 100) * notaPorcentaje[i];
@@ -99,8 +112,10 @@ export default function BloqueNota({setlaNota, setelPorcentaje}: NnotasProps){
             <div className="p-5">
                 <p>Porcentaje (%)</p>
                 {showPorcentaje && (<div className="flex flex-col">
-                    <input className="border-2 w-3/4 p-2 rounded-full mb-2" type="number" value={porcentaje !== null ? porcentaje : ""} onChange={(e)=> setPorcentaje(Number(e.target.value))}></input>
-                    <button className="border-2 px-4 py-2 size-1/4 rounded-full hover:bg-black hover:text-white transition duration-300" onClick={()=>(setShowporcentaje(!showPorcentaje), setNotaPorcentaje2(!showPorcentaje2), setShowValores(!showValores), setShowCantidad(!showCantidad))}>Confirmar</button>
+                    <input className="border-2 w-3/4 p-2 rounded-full mb-2" type="number" min={1} max={100} value={porcentaje !== null ? porcentaje : ""} onChange={(e)=> setPorcentaje(Number(e.target.value))}></input>
+                    <div className="size-1/4">
+                    <button className="border-2 px-4 py-2 rounded-full hover:bg-black hover:text-white transition duration-300 " onClick={()=>(setShowporcentaje(!showPorcentaje), setNotaPorcentaje2(!showPorcentaje2), setShowValores(!showValores), setShowCantidad(!showCantidad))}>Confirmar</button>
+                    </div>
                 </div>)}
                 {showPorcentaje2 && (<p>{porcentaje}</p>)}
                 {showCantidad && (<div>
