@@ -107,6 +107,18 @@ export default function BloqueNota({setlaNota, setelPorcentaje}: NnotasProps){
     const [showPorcentaje2, setNotaPorcentaje2] = useState(false)
     const [showCantidad, setShowCantidad] = useState(false)
 
+    const processPorcen = () => {
+        if (porcentaje === null || porcentaje === 0 || porcentaje > 100 || porcentaje < 0){
+            alert("Verifique el numero del porcentaje")
+        }
+        else {
+            setShowporcentaje(!showPorcentaje)
+            setNotaPorcentaje2(!showPorcentaje2)
+            setShowValores(!showValores)
+            setShowCantidad(!showCantidad)
+        }
+    }
+
     return (
         <div>
             <div className="p-5">
@@ -114,19 +126,20 @@ export default function BloqueNota({setlaNota, setelPorcentaje}: NnotasProps){
                 {showPorcentaje && (<div className="flex flex-col">
                     <input className="border-2 w-3/4 p-2 rounded-full mb-2" type="number" min={1} max={100} value={porcentaje !== null ? porcentaje : ""} onChange={(e)=> setPorcentaje(Number(e.target.value))}></input>
                     <div className="size-1/4">
-                    <button className="border-2 px-4 py-2 rounded-full hover:bg-black hover:text-white transition duration-300 " onClick={()=>(setShowporcentaje(!showPorcentaje), setNotaPorcentaje2(!showPorcentaje2), setShowValores(!showValores), setShowCantidad(!showCantidad))}>Confirmar</button>
+                    <button className="border-2 px-4 py-2 rounded-full hover:bg-black hover:text-white transition duration-300 " onClick={processPorcen}>Confirmar</button>
                     </div>
                 </div>)}
                 {showPorcentaje2 && (<p>{porcentaje}</p>)}
-                {showCantidad && (<div>
-                        <p className="mt-4">Resultados de evaluaciones</p>
+                {showCantidad && (<div className="flex mt-4 mb-2">
+                        <p>Resultados de evaluaciones</p>
+                        <p className="ml-10">%</p>
                     </div>)}
                 {showValores && (<div>
                     <div className="flex items-center cursor-pointer">
                         <p>Cantidad</p>
                         <ArrowDropDownIcon onClick={() => {setShow(!show)}}/>
                     </div>
-                    {show && (<div className="flex justify-end size-1/4 pr-3">
+                    {show && (<div className="flex justify-end size-1/3 sm:md:size-1/4 pr-3">
                         <ul className="bg-white border border-gray-300 rounded-md shadow-lg p-3">
                                 {valores.map((valor) => (
                                     <li key={valor} onClick={() => (setNumeroNotas(valor), setShowValores(!showValores))}>

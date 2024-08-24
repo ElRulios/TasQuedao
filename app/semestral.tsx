@@ -25,7 +25,7 @@ export default function NotaNecesaria({notaSemestral}: SemestrapProps){
   
   return(
     <div className='flex justify-center my-5'>
-      <div className="size-1/2 rounded-3xl shadow-2xl border-1 p-5">
+      <div className="sm:md:size-1/2 rounded-3xl shadow-2xl border-1 p-5">
         <h1 className="font-bold text-2xl">Necesitas obtener {semestralRedonda} en el semestral para pasar la materia con C</h1>
         <Emoji notaSemestral={notaSemestral}/>
       </div>

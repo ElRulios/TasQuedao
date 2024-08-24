@@ -49,33 +49,34 @@ export default function Main (){
   return(
     <div className="m-10"> 
       <div className='flex justify-center my-5'>
-        <div className="size-3/5">
+        <div className="size-full sm:md:size-3/5">
           <Image src={logo} alt="logo"/>
         </div>
       </div>
       <div>
-        <div  className='flex justify-center my-5 '>
-          <div className="size-2/5 rounded-3xl shadow-2xl border-1 ">
+        <div  className='flex justify-center my-5'>
+          <div className="size-full sm:size-2/5 rounded-3xl shadow-2xl border-1 ">
             <h1 className="font-bold text-2xl p-5">Nota Principal 1</h1>
             <BloqueNota setlaNota={handleAccumulation} setelPorcentaje={handlePorcentaje} valor={0} porcentaje={0}/>
           </div>
         </div>
-        <div className="flex justify-center my-5 ">
-          <div className="size-2/5 rounded-3xl shadow-2xl border-1 ">
+        <div className="flex justify-center my-5">
+          <div className="size-full sm:size-2/5 rounded-3xl shadow-2xl border-1 ">
             <h1 className="font-bold text-2xl p-5">Nota Principal 2</h1>
             <BloqueNota setlaNota={handleAccumulation} setelPorcentaje={handlePorcentaje} valor={0} porcentaje={0}/>
           </div>
         </div>
-        <div className="flex justify-center my-5 ">
-          <div className="size-2/5 rounded-3xl shadow-2xl border-1 ">
+        <div className="flex justify-center my-5">
+          <div className="size-full sm:size-2/5 rounded-3xl shadow-2xl border-1 ">
             <h1 className="font-bold text-2xl p-5">Notas Secundarias</h1>
             <BloqueNota setlaNota={handleAccumulation} setelPorcentaje={handlePorcentaje} valor={0} porcentaje={0}/>
           </div>
         </div>
         <div className="flex justify-center my-5">
-          <div className="size-2/5 rounded-3xl shadow-2xl border-1 p-5">
+          <div className="size-full sm:size-2/5 rounded-3xl shadow-2xl border-1 p-5">
             <h1 className="font-bold text-2xl pb-5">Porcentaje del semestral (%)</h1>
-            {inputSemestral && (<input className="border-2 p-2 size-1/2 mr-4 rounded-full mb-2" type="number" min={1} max={100} value={porcentajeSemestral !== null ? porcentajeSemestral : ""} onChange={(e)=> setPorcentajeSemestral(e.target.value ? Number(e.target.value) : null)}></input>)}
+            {inputSemestral && (
+            <input className="border-2 p-2 size-1/2 mr-4 rounded-full mb-2" type="number" min={1} max={100} value={porcentajeSemestral !== null ? porcentajeSemestral : ""} onChange={(e)=> setPorcentajeSemestral(e.target.value ? Number(e.target.value) : null)}></input>)}
             {inputSemestral1 && (<div>
               <p>Porcentaje (%)</p>
               <p>{porcentajeSemestral}</p>
@@ -83,7 +84,7 @@ export default function Main (){
           </div>        
         </div>
         {inputSemestral && (<div className="flex justify-center p-5">
-          <button className="border-2 px-4 py-2 size-1/4 rounded-full hover:bg-black hover:text-white transition duration-300" onClick={resultado}> Obtener nota necesaria </button>
+          <button className="border-2 px-4 py-2 size-max sm:size-1/4 rounded-full hover:bg-black hover:text-white transition duration-300" onClick={resultado}> Obtener nota necesaria </button>
         </div>)}
         {showSemestral && (<div>
           <NotaNecesaria notaSemestral={semestral}/>
