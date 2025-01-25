@@ -71,8 +71,7 @@ export default function Seccion({ setPorcentajeObtenidoSecciones, setPorcentajeS
           min={1}
           max={100}
           className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
-          placeholder="Enter grade (0-100)"
-          value={porcentajeSeccion}
+          placeholder="Porcentaje (1-100)"
           onChange={(e) => setPorcentajeSeccion(Number(e.target.value))}
         />
       </div>

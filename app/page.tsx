@@ -90,8 +90,6 @@ export default function Home() {
         >
           Obtener Resultado
         </button>
-
-        <button onClick={()=> {console.log(porcentajeSeccion)}}>hola</button>
       </div>
     </div>
   );
