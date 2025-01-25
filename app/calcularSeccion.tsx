@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, JSX } from "react";
 import Nnotas from "./nnotas";
 import { FaPlus } from "react-icons/fa";
 
@@ -10,7 +10,7 @@ interface SeccionProps {
 }
 
 export default function Seccion({ setPorcentajeObtenidoSecciones, setPorcentajeSecciones, calculateControl}: SeccionProps) {
-  const [evaluacion, setEvaluacion] = useState<JSX.Element[1]>([]);
+  const [evaluacion, setEvaluacion] = useState<JSX.Element[]>([]);
   const [notas, setNotas] = useState<number[]>([]);
   const [notaPorcentajes, setNotaPorcentajes] = useState<number[]>([]);
   const [porcentajeSeccion, setPorcentajeSeccion] = useState<number>(0);
